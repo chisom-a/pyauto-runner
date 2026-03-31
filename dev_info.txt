@@ -1,0 +1,14 @@
+Tile IDs:
+00: Nothing
+01: Dirt tile
+02: Grass tile
+03: Blob enemy
+04: Moving platform in X-direction (is an object)
+05: Moving platform in Y-direction (is an object)
+06: Lava tile (is an object)
+07: Coin tile (is an object)
+08: Exit door tile (is an object)
+09: Air tile (the user can't place anything on this tile)
+10: Green tile (the user can place this tile)
+11: Green moving platform in X-direction (is an object)
+12: Green moving platform in Y-direction (is an object)
