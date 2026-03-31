@@ -113,7 +113,7 @@ def reset_level(level: int):
 class Player():
     def __init__(self, x: int, y: int):
         return self.reset(x, y)
-    
+
     def reset(self, x: int, y: int):
         self.images_right = []
         self.images_left = []
