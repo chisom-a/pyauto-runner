@@ -144,8 +144,6 @@ class Player():
             jump_key_pressed = key[pygame.K_SPACE] or key[pygame.K_UP] or key[pygame.K_w]
             #move_left_key_pressed = key[pygame.K_LEFT] or key[pygame.K_a]
             #move_right_key_pressed = key[pygame.K_RIGHT] or key[pygame.K_d]
-            move_left_key_pressed = key[pygame.K_LEFT] or key[pygame.K_a]
-            move_right_key_pressed = key[pygame.K_RIGHT] or key[pygame.K_d]
 
             if jump_key_pressed and not self.jumped and not self.in_air:
                 jump_fx.play()
