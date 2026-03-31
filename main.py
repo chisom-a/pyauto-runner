@@ -129,7 +129,7 @@ class Player():
         self.height = self.image.get_height()
         self.vel_y = 0
         self.jumped = False
-        self.direction = 0
+        self.direction = 1
         self.in_air = True
 
     def update(self, game_state: State):
@@ -153,21 +153,9 @@ class Player():
                 self.jumped = True
             if not jump_key_pressed:
                 self.jumped = False
-            if move_left_key_pressed:
-                dx -= 5
-                self.counter += 1
-                self.direction = -1
-            if move_right_key_pressed:
-                dx += 5
-                self.counter += 1
-                self.direction = 1
-            if not move_left_key_pressed and not move_right_key_pressed:
-                self.counter = 0
-                self.index = 0
-                if self.direction == 1:
-                    self.image = self.images_right[self.index]
-                if self.direction == -1:
-                    self.image = self.images_left[self.index]
+            
+            dx += 5 * self.direction
+            self.counter += 1
             
             #handle animation
             if self.counter > walk_cooldown:
@@ -190,7 +178,8 @@ class Player():
             for tile in world.tile_list:
                 #check for collision in x direction
                 if tile[1].colliderect(self.rect.x + dx, self.rect.y, self.width, self.height):
-                    dx = 0
+                    self.direction *= -1
+                    dx = 5 * self.direction
                 
                 #check for collision in y direction
                 if tile[1].colliderect(self.rect.x, self.rect.y + dy, self.width, self.height):
@@ -216,7 +205,8 @@ class Player():
             
             #stop player from moving too far left
             if self.rect.x + dx < 0:
-                dx = 0
+                self.direction *= -1
+                dx = 5 * self.direction
             
             #check for out-of-bounds position
             is_out_of_bounds = self.rect.x < -100 or self.rect.x > GAME_WIDTH + 40 or self.rect.y < -100 or self.rect.y > GAME_HEIGHT + 100
@@ -232,7 +222,8 @@ class Player():
             for platform in platform_group:
                 #collison in x-direction
                 if platform.rect.colliderect(self.rect.x + dx, self.rect.y, self.width, self.height):
-                    dx = 0
+                    self.direction *= -1
+                    dx = 5 * self.direction
                 
                 #collison in y-direction
                 if platform.rect.colliderect(self.rect.x, self.rect.y + dy, self.width, self.height):
