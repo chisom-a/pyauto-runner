@@ -40,12 +40,17 @@ game_state = State.MAIN_MENU
 level = 0
 score = 0
 #For tiles_placed and each element list in MAX_TILES_PLACED,
-#   index 0: Green tiles placed (id)
+#   index 0: Green tiles placed
 #   index 1: Green horizontal platforms placed
 #   index 2: Green vertical platforms placed
 MAX_TILES_PLACED = ( #Store max tiles you can place in each level
     (5, 4, 3),
-    (3, 2, 1)
+    (2, 0, 0),
+    (5, 4, 3),
+    (5, 4, 3),
+    (5, 4, 3),
+    (5, 4, 3),
+    (5, 4, 3)
 )
 tiles_placed = [0, 0, 0]
 tile_to_place = 0
