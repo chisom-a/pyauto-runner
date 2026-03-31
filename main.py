@@ -14,17 +14,12 @@ mixer.init()
 pygame.init() #Needed to initialize the game
 
 #Game fonts
-#font_score = pygame.font.SysFont('freesansbold', 30)
-#font_score = pygame.font.SysFont('Bauhaus 93', 30)
 try:
-    font_score = pygame.font.SysFont('Bauhaus 93', 30)
+    default_font = pygame.font.SysFont('Bauhaus 93', 70)
+    score_font = pygame.font.SysFont('Bauhaus 93', 30)
 except:
-    font_score = pygame.font.SysFont('freesansbold', 30)
-
-try:
-    font = pygame.font.SysFont('Bauhaus 93', 70)
-except:
-    font = pygame.font.SysFont('freesansbold', 70)
+    default_font = pygame.font.SysFont('freesansbold', 70)
+    score_font = pygame.font.SysFont('freesansbold', 30)
 
 #Information on game's state
 game_state = State.MAIN_MENU
@@ -261,7 +256,7 @@ class Player():
         
         elif game_state == State.GAME_OVER:
             self.image = self.dead_image
-            draw_text('GAME OVER!', font, BLUE, (SCREEN_WIDTH // 2) - 200, SCREEN_HEIGHT // 2)
+            draw_text('GAME OVER!', default_font, BLUE, (SCREEN_WIDTH // 2) - 200, SCREEN_HEIGHT // 2)
             if self.rect.y > 200: self.rect.y -= 5
         
         #draw player onto screen
@@ -406,7 +401,7 @@ while run: #Game loop
             if pygame.sprite.spritecollide(player, coin_group, True):
                 score += 1
                 coin_fx.play()
-            draw_text(f'X {score}', font_score, WHITE, TILE_SIZE - 10, 10)
+            draw_text(f'X {score}', score_font, WHITE, TILE_SIZE - 10, 10)
 
             if restart_button.draw(screen):
                 world = reset_level(level)
@@ -449,13 +444,13 @@ while run: #Game loop
             #Draws buttons for picking tile to place
             if green_tile_button.draw(screen):
                 tile_to_place = 10
-            draw_text(f'X {MAX_TILES_PLACED[level][0] - tiles_placed[0]}', font_score, WHITE, 2*TILE_SIZE + 5, GAME_HEIGHT + (OUTER_MARGIN_HEIGHT // 2))
+            draw_text(f'X {MAX_TILES_PLACED[level][0] - tiles_placed[0]}', score_font, WHITE, 2*TILE_SIZE + 5, GAME_HEIGHT + (OUTER_MARGIN_HEIGHT // 2))
             if green_x_platform_button.draw(screen):
                 tile_to_place = 11
-            draw_text(f'X {MAX_TILES_PLACED[level][1] - tiles_placed[1]}', font_score, WHITE, 6*TILE_SIZE + 5, GAME_HEIGHT + (OUTER_MARGIN_HEIGHT // 2))
+            draw_text(f'X {MAX_TILES_PLACED[level][1] - tiles_placed[1]}', score_font, WHITE, 6*TILE_SIZE + 5, GAME_HEIGHT + (OUTER_MARGIN_HEIGHT // 2))
             if green_y_platform_button.draw(screen):
                 tile_to_place = 12
-            draw_text(f'X {MAX_TILES_PLACED[level][2] - tiles_placed[2]}', font_score, WHITE, 10*TILE_SIZE + 5, GAME_HEIGHT + (OUTER_MARGIN_HEIGHT // 2))
+            draw_text(f'X {MAX_TILES_PLACED[level][2] - tiles_placed[2]}', score_font, WHITE, 10*TILE_SIZE + 5, GAME_HEIGHT + (OUTER_MARGIN_HEIGHT // 2))
 
             #Draw border around the tile button based on the tile the user selected to place
             if tile_to_place == 10:
@@ -485,7 +480,7 @@ while run: #Game loop
                 world = reset_level(level)
                 game_state = State.EDITOR
             else:
-                draw_text('YOU WIN!', font, BLUE, (SCREEN_WIDTH // 2) - 140, SCREEN_HEIGHT // 2)
+                draw_text('YOU WIN!', default_font, BLUE, (SCREEN_WIDTH // 2) - 140, SCREEN_HEIGHT // 2)
                 #restart game
                 if restart_button.draw(screen):
                     level = 0
