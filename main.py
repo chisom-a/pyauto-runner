@@ -69,13 +69,13 @@ start_img = pygame.image.load(os.path.join(script_dir, 'assets/img/start_btn.png
 exit_img = pygame.image.load(os.path.join(script_dir, 'assets/img/exit_btn.png'))
 
 #load sounds
-pygame.mixer.music.load(os.path.join(script_dir, 'assets/img/music.wav'))
+pygame.mixer.music.load(os.path.join(script_dir, 'assets/audio/music.wav'))
 pygame.mixer.music.play(-1, 0.0, 5000)
-coin_fx = pygame.mixer.Sound(os.path.join(script_dir, 'assets/img/coin.wav'))
+coin_fx = pygame.mixer.Sound(os.path.join(script_dir, 'assets/audio/coin.wav'))
 coin_fx.set_volume(0.5)
-jump_fx = pygame.mixer.Sound(os.path.join(script_dir, 'assets/img/jump.wav'))
+jump_fx = pygame.mixer.Sound(os.path.join(script_dir, 'assets/audio/jump.wav'))
 jump_fx.set_volume(0.5)
-game_over_fx = pygame.mixer.Sound(os.path.join(script_dir, 'assets/img/game_over.wav'))
+game_over_fx = pygame.mixer.Sound(os.path.join(script_dir, 'assets/audio/game_over.wav'))
 game_over_fx.set_volume(0.5)
 
 def draw_text(text, font, text_col, x, y):
