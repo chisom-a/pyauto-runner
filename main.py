@@ -131,7 +131,6 @@ class Player():
         self.jumped = False
         self.direction = 0
         self.in_air = True
-        self.move_direction = 1
 
     def update(self, game_state: State):
         dx = 0
