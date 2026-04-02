@@ -44,13 +44,13 @@ score = 0
 #   index 1: Green horizontal platforms placed
 #   index 2: Green vertical platforms placed
 MAX_TILES_PLACED = ( #Store max tiles you can place in each level
-    (5, 4, 3),
+    (1, 0, 0),
     (2, 0, 0),
-    (5, 4, 3),
-    (5, 4, 3),
-    (5, 4, 3),
-    (5, 4, 3),
-    (5, 4, 3)
+    (0, 2, 0),
+    (0, 1, 1),
+    (99, 99, 99),
+    (99, 99, 99),
+    (99, 99, 99)
 )
 tiles_placed = [0, 0, 0]
 tile_to_place = 0
@@ -164,15 +164,15 @@ class Player():
             #move_left_key_pressed = key[pygame.K_LEFT] or key[pygame.K_a]
             #move_right_key_pressed = key[pygame.K_RIGHT] or key[pygame.K_d]
 
+            dx += 5 * self.direction
+            self.counter += 1
+
             if jump_key_pressed and not self.jumped and not self.in_air:
                 jump_fx.play()
                 self.vel_y = -15
                 self.jumped = True
             if not jump_key_pressed:
                 self.jumped = False
-            
-            dx += 5 * self.direction
-            self.counter += 1
             
             #handle animation
             if self.counter > walk_cooldown:
