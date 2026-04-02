@@ -1,4 +1,4 @@
-# PyAuto Runner
+# PyAuto Runner (Work-in-Progress)
 PyAuto Runner is an auto-runner game created by me, Chisom A., where you place blocks to go through the levels. This game tests the player's strategy and coordination, as they must determine where to place the tiles and time their jump movements to complete each level.
 
 ## Installation Instructions
