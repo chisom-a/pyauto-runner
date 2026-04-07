@@ -21,6 +21,6 @@ jobs:
     - name: Package Files
       run: pyinstaller main.spec
     - name: Upload Files
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: dist/*
