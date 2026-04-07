@@ -45,8 +45,8 @@ MAX_TILES_PLACED = ( #Store max tiles you can place in each level
     (2, 0, 0),
     (0, 2, 0),
     (0, 1, 1),
-    (99, 99, 99),
-    (99, 99, 99),
+    (0, 3, 0),
+    (0, 2, 1),
     (99, 99, 99)
 )
 tiles_placed = [0, 0, 0]
@@ -310,7 +310,7 @@ class World():
                     tile = (img, img_rect)
                     self.tile_list.append(tile)
                 elif tile == 3:
-                    blob = Enemy(col_count * TILE_SIZE, row_count * TILE_SIZE + 28)
+                    blob = Enemy(col_count * TILE_SIZE + (TILE_SIZE // 8), row_count * TILE_SIZE + 28)
                     blob_group.add(blob)
                 elif tile == 4:
                     platform = Platform(col_count * TILE_SIZE, row_count * TILE_SIZE, 1, 0)
