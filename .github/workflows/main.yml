@@ -1,7 +1,6 @@
 # based on https://github.com/pyinstaller/pyinstaller/issues/6296#issuecomment-943620645
 on:
   push:
-  workflow_dispatch:
 
 jobs:
   build:
