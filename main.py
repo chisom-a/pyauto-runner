@@ -78,7 +78,7 @@ jump_fx.set_volume(0.5)
 game_over_fx = pygame.mixer.Sound(os.path.join(script_dir, 'assets/audio/game_over.wav'))
 game_over_fx.set_volume(0.5)
 
-def draw_text(text, font, text_col, x, y):
+def draw_text(text: str, font: pygame.font.Font, text_col, x: int, y: int):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
 
@@ -263,8 +263,7 @@ class Player():
         
         elif game_state == State.GAME_OVER:
             self.image = self.dead_image
-            draw_text('GAME OVER!', default_font, BLUE, (SCREEN_WIDTH // 2) - 200, SCREEN_HEIGHT // 2)
-            if self.rect.y > 200: self.rect.y -= 5
+            if self.rect.y > -100: self.rect.y -= 5
         
         #draw player onto screen
         screen.blit(self.image, self.rect)
@@ -472,6 +471,7 @@ while run: #Game loop
 
         #if player has died
         elif game_state == State.GAME_OVER:
+            draw_text('GAME OVER!', default_font, BLUE, (SCREEN_WIDTH // 2) - 180, 140)
             if restart_button.draw(screen):
                 world_data = []
                 world = reset_level(level)
@@ -487,7 +487,7 @@ while run: #Game loop
                 world = reset_level(level)
                 game_state = State.EDITOR
             else:
-                draw_text('YOU WIN!', default_font, BLUE, (SCREEN_WIDTH // 2) - 140, SCREEN_HEIGHT // 2)
+                draw_text('YOU WIN!', default_font, BLUE, (SCREEN_WIDTH // 2) - 140, 140)
                 #restart game
                 if restart_button.draw(screen):
                     level = 0
