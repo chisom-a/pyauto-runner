@@ -21,7 +21,7 @@ jobs:
     - name: Package Files
       run: pyinstaller main.spec
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.2.2
+      uses: actions/upload-artifact@v5.0.0
       with:
         name: pyauto-runner
         path: dist/*
