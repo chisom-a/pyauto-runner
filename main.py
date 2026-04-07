@@ -120,6 +120,7 @@ def reset_level(level: int):
     if os.path.exists(level_path):
         pickle_in = open(level_path, 'rb')
         world_data = pickle.load(pickle_in)
+        pickle_in.close()
     world = World(world_data)
 
     return world
@@ -355,6 +356,7 @@ class World():
 level_path = os.path.join(script_dir, f'assets/level{level}_data')
 pickle_in = open(level_path, 'rb')
 world_data = pickle.load(pickle_in)
+pickle_in.close()
 
 player = Player(PLAYER_DEFAULT_X_POS, PLAYER_DEFAULT_Y_POS)
 
