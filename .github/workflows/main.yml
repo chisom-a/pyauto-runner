@@ -12,16 +12,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    
     - name: Setup Python
       uses: actions/setup-python@v6.2.0
       with:
         python-version: 3.13.12
+        
     - name: Install Dependencies and PyInstaller
       run: pip install -r requirements.txt pyinstaller
+      
     - name: Package Files
       run: pyinstaller main.spec
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v5.0.0
+      
+    - name: Release
+      uses: softprops/action-gh-release@v1
       with:
-        name: pyauto-runner
-        path: dist/*
+        files: |
+          dist/*
