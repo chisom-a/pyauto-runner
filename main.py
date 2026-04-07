@@ -106,7 +106,7 @@ def place_tile_in_world(tile_id: int, tile_x: int, tile_y: int):
 #function to reset level
 def reset_level(level: int):
     global world_data, score, tile_to_place, tiles_placed
-    player.reset(PLAYER_DEFAULT_X_POS, PLAYER_DEFAULT_Y_POS)
+    player.reset(PLAYER_START_X_POS, PLAYER_START_Y_POS)
     empty_sprite_groups()
     score = 0
     tile_to_place = 0
@@ -355,7 +355,7 @@ pickle_in = open(level_path, 'rb')
 world_data = pickle.load(pickle_in)
 pickle_in.close()
 
-player = Player(PLAYER_DEFAULT_X_POS, PLAYER_DEFAULT_Y_POS)
+player = Player(PLAYER_START_X_POS, PLAYER_START_Y_POS)
 
 blob_group = pygame.sprite.Group()
 platform_group = pygame.sprite.Group()
