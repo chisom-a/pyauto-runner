@@ -12,7 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os.path
 from enum import Enum, auto
+
+#Getting directory where script is located
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+IMG_DIR = os.path.join(SCRIPT_DIR, 'assets', 'img')
+AUDIO_DIR = os.path.join(SCRIPT_DIR, 'assets', 'audio')
+ASSETS_DIR = os.path.join(SCRIPT_DIR, 'assets')
 
 class State(Enum):
     MAIN_MENU = auto()

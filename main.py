@@ -13,14 +13,11 @@
 # limitations under the License.
 
 #import pprint <-- For debugging
-import os.path, pygame, pickle
+import pygame, pickle
 from pygame import mixer
 from objects import *
 from game_values import *
 from sys import exit #Terminates the program
-
-#Getting directory where script is located
-script_dir = os.path.dirname(os.path.abspath(__file__))
 
 pygame.mixer.pre_init(44100, -16, 2, 512)
 mixer.init()
@@ -61,21 +58,21 @@ screen.fill(BKG_COLOR)
 pygame.display.set_caption(GAME_TITLE) #Title of the window
 
 #load images
-sun_img = pygame.image.load(os.path.join(script_dir, 'assets/img/sun.png'))
-bg_img = pygame.image.load(os.path.join(script_dir, 'assets/img/sky.png'))
-restart_img = pygame.image.load(os.path.join(script_dir, 'assets/img/restart_btn.png'))
-load_img = pygame.image.load(os.path.join(script_dir, 'assets/img/load_btn.png'))
-start_img = pygame.image.load(os.path.join(script_dir, 'assets/img/start_btn.png'))
-exit_img = pygame.image.load(os.path.join(script_dir, 'assets/img/exit_btn.png'))
+sun_img = pygame.image.load(os.path.join(IMG_DIR,'sun.png'))
+bg_img = pygame.image.load(os.path.join(IMG_DIR,'sky.png'))
+restart_img = pygame.image.load(os.path.join(IMG_DIR,'restart_btn.png'))
+load_img = pygame.image.load(os.path.join(IMG_DIR,'load_btn.png'))
+start_img = pygame.image.load(os.path.join(IMG_DIR,'start_btn.png'))
+exit_img = pygame.image.load(os.path.join(IMG_DIR,'exit_btn.png'))
 
 #load sounds
-pygame.mixer.music.load(os.path.join(script_dir, 'assets/audio/music.wav'))
+pygame.mixer.music.load(os.path.join(AUDIO_DIR, 'music.wav'))
 pygame.mixer.music.play(-1, 0.0, 5000)
-coin_fx = pygame.mixer.Sound(os.path.join(script_dir, 'assets/audio/coin.wav'))
+coin_fx = pygame.mixer.Sound(os.path.join(AUDIO_DIR, 'coin.wav'))
 coin_fx.set_volume(0.5)
-jump_fx = pygame.mixer.Sound(os.path.join(script_dir, 'assets/audio/jump.wav'))
+jump_fx = pygame.mixer.Sound(os.path.join(AUDIO_DIR, 'jump.wav'))
 jump_fx.set_volume(0.5)
-game_over_fx = pygame.mixer.Sound(os.path.join(script_dir, 'assets/audio/game_over.wav'))
+game_over_fx = pygame.mixer.Sound(os.path.join(AUDIO_DIR, 'game_over.wav'))
 game_over_fx.set_volume(0.5)
 
 def draw_text(text: str, font: pygame.font.Font, text_col, x: int, y: int):
@@ -116,7 +113,7 @@ def reset_level(level: int):
     tiles_placed = [0, 0, 0]
     
     #load in level data and create world
-    level_path = os.path.join(script_dir, f'assets/level{level}_data')
+    level_path = os.path.join(ASSETS_DIR, f'level{level}_data')
     if os.path.exists(level_path):
         pickle_in = open(level_path, 'rb')
         world_data = pickle.load(pickle_in)
@@ -135,12 +132,12 @@ class Player():
         self.index = 0
         self.counter = 0 
         for num in range(1, 5):
-            img_right = pygame.image.load(os.path.join(script_dir, f'assets/img/guy{num}.png'))
+            img_right = pygame.image.load(os.path.join(IMG_DIR, f'guy{num}.png'))
             img_right = pygame.transform.scale(img_right, (35, 50))
             img_left = pygame.transform.flip(img_right, True, False)
             self.images_right.append(img_right)
             self.images_left.append(img_left)
-        self.dead_image = pygame.image.load(os.path.join(script_dir, 'assets/img/ghost.png'))
+        self.dead_image = pygame.image.load(os.path.join(IMG_DIR, 'ghost.png'))
         self.image = self.images_right[self.index]
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -273,14 +270,14 @@ class Player():
         return game_state
 
 #load tile images
-dirt_img = pygame.image.load(os.path.join(script_dir, 'assets/img/dirt.png'))
-grass_img = pygame.image.load(os.path.join(script_dir, 'assets/img/grass.png'))
+dirt_img = pygame.image.load(os.path.join(IMG_DIR, 'dirt.png'))
+grass_img = pygame.image.load(os.path.join(IMG_DIR, 'grass.png'))
 
 green_tile_img = dirt_img.copy()
 green_tile_img.fill(USER_TILE_COLOR_RGBA, special_flags=pygame.BLEND_RGBA_ADD)
-green_x_platform_img = pygame.image.load(os.path.join(script_dir, 'assets/img/platform_x.png'))
+green_x_platform_img = pygame.image.load(os.path.join(IMG_DIR, 'platform_x.png'))
 green_x_platform_img.fill(USER_TILE_COLOR_RGBA, special_flags=pygame.BLEND_RGBA_ADD)
-green_y_platform_img = pygame.image.load(os.path.join(script_dir, 'assets/img/platform_y.png'))
+green_y_platform_img = pygame.image.load(os.path.join(IMG_DIR, 'platform_y.png'))
 green_y_platform_img.fill(USER_TILE_COLOR_RGBA, special_flags=pygame.BLEND_RGBA_ADD)
 
 green_tile_select_img = pygame.transform.scale(green_tile_img, (TILE_SIZE, TILE_SIZE))
@@ -353,7 +350,7 @@ class World():
             pygame.draw.rect(screen, (255, 255, 255), tile[1], 2) #draws each tile's box area (for debugging)
 
 #load in level data and create world
-level_path = os.path.join(script_dir, f'assets/level{level}_data')
+level_path = os.path.join(ASSETS_DIR, f'level{level}_data')
 pickle_in = open(level_path, 'rb')
 world_data = pickle.load(pickle_in)
 pickle_in.close()

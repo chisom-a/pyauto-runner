@@ -15,9 +15,6 @@
 import os.path, pygame #, pprint <-- For debugging
 from game_values import *
 
-#Getting directory where script is located
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
 class Button():
     def __init__(self, x: int, y: int, image: pygame.Surface):
         self.image = image
@@ -50,7 +47,7 @@ class Button():
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, x: int, y: int):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(os.path.join(script_dir, 'assets/img/blob.png'))
+        self.image = pygame.image.load(os.path.join(IMG_DIR, 'blob.png'))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -68,9 +65,9 @@ class Platform(pygame.sprite.Sprite):
     def __init__(self, x: int, y: int, move_x: int, move_y: int, is_user_tile=False):
         pygame.sprite.Sprite.__init__(self)
         if move_x == 1:
-            img = pygame.image.load(os.path.join(script_dir, 'assets/img/platform_x.png'))
+            img = pygame.image.load(os.path.join(IMG_DIR, 'platform_x.png'))
         else:
-            img = pygame.image.load(os.path.join(script_dir, 'assets/img/platform_y.png'))
+            img = pygame.image.load(os.path.join(IMG_DIR, 'platform_y.png'))
         if is_user_tile:
             img.fill(USER_TILE_COLOR_RGBA, special_flags=pygame.BLEND_RGBA_ADD)
         self.image = pygame.transform.scale(img, (TILE_SIZE, TILE_SIZE // 2))
@@ -93,7 +90,7 @@ class Platform(pygame.sprite.Sprite):
 class Lava(pygame.sprite.Sprite):
     def __init__(self, x: int, y: int):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load(os.path.join(script_dir, 'assets/img/lava.png'))
+        img = pygame.image.load(os.path.join(IMG_DIR, 'lava.png'))
         self.image = pygame.transform.scale(img, (TILE_SIZE, TILE_SIZE // 2))
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -102,7 +99,7 @@ class Lava(pygame.sprite.Sprite):
 class Coin(pygame.sprite.Sprite):
     def __init__(self, x: int, y: int):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load(os.path.join(script_dir, 'assets/img/coin.png'))
+        img = pygame.image.load(os.path.join(IMG_DIR, 'coin.png'))
         self.image = pygame.transform.scale(img, (TILE_SIZE // 2, TILE_SIZE // 2))
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
@@ -110,7 +107,7 @@ class Coin(pygame.sprite.Sprite):
 class Exit(pygame.sprite.Sprite):
     def __init__(self, x: int, y: int):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load(os.path.join(script_dir, 'assets/img/exit.png'))
+        img = pygame.image.load(os.path.join(IMG_DIR, 'exit.png'))
         self.image = pygame.transform.scale(img, (TILE_SIZE, int(TILE_SIZE * 1.5)))
         self.rect = self.image.get_rect()
         self.rect.x = x
