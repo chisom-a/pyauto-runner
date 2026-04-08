@@ -15,12 +15,11 @@
 import os.path
 from enum import Enum, auto
 
-#Getting directory where script is located
+#Getting directory paths where scripts and data are located
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-
-IMG_DIR = os.path.join(SCRIPT_DIR, 'assets', 'img')
-AUDIO_DIR = os.path.join(SCRIPT_DIR, 'assets', 'audio')
 ASSETS_DIR = os.path.join(SCRIPT_DIR, 'assets')
+IMG_DIR = os.path.join(ASSETS_DIR, 'img')
+AUDIO_DIR = os.path.join(ASSETS_DIR, 'audio')
 
 class State(Enum):
     MAIN_MENU = auto()

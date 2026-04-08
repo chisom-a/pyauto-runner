@@ -47,6 +47,9 @@ MAX_TILES_PLACED = ( #Store max tiles you can place in each level
     (0, 1, 1),
     (0, 3, 0),
     (0, 2, 1),
+    (99, 99, 99),
+    (99, 99, 99),
+    (99, 99, 99),
     (99, 99, 99)
 )
 tiles_placed = [0, 0, 0]
@@ -58,12 +61,12 @@ screen.fill(BKG_COLOR)
 pygame.display.set_caption(GAME_TITLE) #Title of the window
 
 #load images
-sun_img = pygame.image.load(os.path.join(IMG_DIR,'sun.png'))
-bg_img = pygame.image.load(os.path.join(IMG_DIR,'sky.png'))
-restart_img = pygame.image.load(os.path.join(IMG_DIR,'restart_btn.png'))
-load_img = pygame.image.load(os.path.join(IMG_DIR,'load_btn.png'))
-start_img = pygame.image.load(os.path.join(IMG_DIR,'start_btn.png'))
-exit_img = pygame.image.load(os.path.join(IMG_DIR,'exit_btn.png'))
+sun_img = pygame.image.load(os.path.join(IMG_DIR, 'sun.png'))
+bg_img = pygame.image.load(os.path.join(IMG_DIR, 'sky.png'))
+restart_img = pygame.image.load(os.path.join(IMG_DIR, 'restart_btn.png'))
+load_img = pygame.image.load(os.path.join(IMG_DIR, 'load_btn.png'))
+start_img = pygame.image.load(os.path.join(IMG_DIR, 'start_btn.png'))
+exit_img = pygame.image.load(os.path.join(IMG_DIR, 'exit_btn.png'))
 
 #load sounds
 pygame.mixer.music.load(os.path.join(AUDIO_DIR, 'music.wav'))
@@ -403,7 +406,7 @@ while run: #Game loop
             platform_group.update()
             #update score
             #check if a coin has been collected
-            if pygame.sprite.spritecollide(player, coin_group, True):
+            if pygame.sprite.spritecollide(player, coin_group, True): # pyright: ignore[reportArgumentType]
                 score += 1
                 coin_fx.play()
             draw_text(f'X {score}', score_font, WHITE, TILE_SIZE - 10, 10)
