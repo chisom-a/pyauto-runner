@@ -26,6 +26,10 @@ mixer.init()
 
 pygame.init() #Needed to initialize the game
 
+#Load app icon
+icon_img = pygame.image.load(os.path.join(IMG_DIR, 'app_icon.png'))
+pygame.display.set_icon(icon_img)
+
 #Game fonts
 try:
     default_font = pygame.font.SysFont('Bauhaus 93', 70)
@@ -62,9 +66,12 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 screen.fill(BKG_COLOR)
 pygame.display.set_caption(GAME_TITLE) #Title of the window
 
-#load images
+#load title screen and background images
+title_img = pygame.image.load(os.path.join(IMG_DIR, 'title.png'))
 sun_img = pygame.image.load(os.path.join(IMG_DIR, 'sun.png'))
 bg_img = pygame.image.load(os.path.join(IMG_DIR, 'sky.png'))
+
+#load button images
 restart_img = pygame.image.load(os.path.join(IMG_DIR, 'restart_btn.png'))
 load_img = pygame.image.load(os.path.join(IMG_DIR, 'load_btn.png'))
 start_img = pygame.image.load(os.path.join(IMG_DIR, 'start_btn.png'))
@@ -277,7 +284,6 @@ class Player():
 #load tile images
 dirt_img = pygame.image.load(os.path.join(IMG_DIR, 'dirt.png'))
 grass_img = pygame.image.load(os.path.join(IMG_DIR, 'grass.png'))
-
 green_tile_img = dirt_img.copy()
 green_tile_img.fill(USER_TILE_COLOR_RGBA, special_flags=pygame.BLEND_RGBA_ADD)
 green_x_platform_img = pygame.image.load(os.path.join(IMG_DIR, 'platform_x.png'))
@@ -394,6 +400,7 @@ while run: #Game loop
     screen.blit(sun_img, (100, 100))
 
     if game_state == State.MAIN_MENU:
+        screen.blit(title_img, (96, 0))
         if exit_button.draw(screen):
             run = False
         if start_button.draw(screen):

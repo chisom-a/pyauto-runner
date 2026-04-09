@@ -22,6 +22,7 @@ exe = EXE(
     [],
     exclude_binaries=True,
     name='pyauto-runner',
+    icon='assets/img/app_icon.ico',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
