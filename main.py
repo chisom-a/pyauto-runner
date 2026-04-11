@@ -384,7 +384,7 @@ world = World(world_data)
 restart_button = Button(SCREEN_WIDTH // 2 - 50, GAME_HEIGHT + (OUTER_MARGIN_HEIGHT // 3), restart_img)
 load_button = Button(GAME_WIDTH - (TILE_SIZE + 21), GAME_HEIGHT + (OUTER_MARGIN_HEIGHT // 2) - 10, load_img)
 start_button = Button(SCREEN_WIDTH // 2 - 350, SCREEN_HEIGHT // 2, start_img)
-exit_button = Button(SCREEN_WIDTH // 2 + 150, SCREEN_HEIGHT // 2, exit_img)
+exit_button = Button(526, SCREEN_HEIGHT // 2, exit_img)
 
 #create tile select buttons
 green_tile_button = Button(TILE_SIZE, GAME_HEIGHT + (OUTER_MARGIN_HEIGHT // 2) - TILE_SIZE//2, green_tile_select_img)
