@@ -187,17 +187,6 @@ class Player():
                 self.jumped = True
             if not jump_key_pressed:
                 self.jumped = False
-            
-            #handle animation
-            if self.counter > walk_cooldown:
-                self.counter = 0
-                self.index += 1
-                if self.index >= len(self.images_right): self.index = 0
-                
-                if self.direction == 1:
-                    self.image = self.images_right[self.index]
-                if self.direction == -1:
-                    self.image = self.images_left[self.index]
 
             #add gravity
             self.vel_y += 1
@@ -267,13 +256,24 @@ class Player():
                         self.rect.bottom = platform.rect.top - 1
                         self.in_air = False
                         dy = 0
-                    #move sideways with platform
-                    if platform.move_x != 0:
-                        dx += platform.move_direction
+                        #move sideways with platform
+                        if platform.move_x != 0:
+                            dx += platform.move_direction
 
             #update player coordinates
             self.rect.x += dx
             self.rect.y += dy
+
+            #handle animation
+            if self.counter > walk_cooldown:
+                self.counter = 0
+                self.index += 1
+                if self.index >= len(self.images_right): self.index = 0
+                
+                if self.direction == 1:
+                    self.image = self.images_right[self.index]
+                if self.direction == -1:
+                    self.image = self.images_left[self.index]
         
         elif game_state == State.GAME_OVER:
             self.image = self.dead_image
