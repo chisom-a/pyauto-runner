@@ -91,11 +91,11 @@ def draw_text(text: str, font: pygame.font.Font, text_col, x: int, y: int):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
 
-#create dummy coin object
+#create dummy coin for showing score
 dummy_coin = Coin(TILE_SIZE // 2, TILE_SIZE // 2)
 
 #create dummy coin for showing score
-def draw_coin_counter(screen: pygame.Surface):
+def draw_score_counter(screen: pygame.Surface):
     dummy_coin.draw(screen)
     draw_text(f'X {score}', score_font, WHITE, TILE_SIZE - 10, 10)
 
@@ -418,7 +418,7 @@ while run: #Game loop
             if pygame.sprite.spritecollide(player, coin_group, True): # pyright: ignore[reportArgumentType]
                 score += 1
                 coin_fx.play()
-            draw_coin_counter(screen)
+            draw_score_counter(screen)
 
             if restart_button.draw(screen):
                 world = reset_level(level)
@@ -483,7 +483,7 @@ while run: #Game loop
         #if player has died
         elif game_state == State.GAME_OVER:
             draw_text('GAME OVER!', default_font, BLUE, (SCREEN_WIDTH // 2) - 180, 140)
-            draw_coin_counter(screen)
+            draw_score_counter(screen)
             if restart_button.draw(screen):
                 world_data = []
                 world = reset_level(level)
