@@ -103,6 +103,9 @@ class Coin(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(img, (TILE_SIZE // 2, TILE_SIZE // 2))
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
+    
+    def draw(self, screen: pygame.Surface):
+        screen.blit(self.image, self.rect)
 
 class Exit(pygame.sprite.Sprite):
     def __init__(self, x: int, y: int):

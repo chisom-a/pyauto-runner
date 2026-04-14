@@ -91,15 +91,12 @@ def draw_text(text: str, font: pygame.font.Font, text_col, x: int, y: int):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
 
-#load dummy coin image
-dummy_coin_img = pygame.image.load(os.path.join(IMG_DIR, 'coin.png'))
-dummy_coin_img = pygame.transform.scale(dummy_coin_img, (TILE_SIZE // 2, TILE_SIZE // 2))
-dummy_coin_img_rect = dummy_coin_img.get_rect()
-dummy_coin_img_rect.center = (TILE_SIZE // 2, TILE_SIZE // 2)
+#create dummy coin object
+dummy_coin = Coin(TILE_SIZE // 2, TILE_SIZE // 2)
 
 #create dummy coin for showing score
 def draw_coin_counter(screen: pygame.Surface):
-    screen.blit(dummy_coin_img, dummy_coin_img_rect)
+    dummy_coin.draw(screen)
     draw_text(f'X {score}', score_font, WHITE, TILE_SIZE - 10, 10)
 
 def empty_sprite_groups():
