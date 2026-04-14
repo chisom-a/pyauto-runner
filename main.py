@@ -91,16 +91,23 @@ def draw_text(text: str, font: pygame.font.Font, text_col, x: int, y: int):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
 
+#load dummy coin image
+dummy_coin_img = pygame.image.load(os.path.join(IMG_DIR, 'coin.png'))
+dummy_coin_img = pygame.transform.scale(dummy_coin_img, (TILE_SIZE // 2, TILE_SIZE // 2))
+dummy_coin_img_rect = dummy_coin_img.get_rect()
+dummy_coin_img_rect.center = (TILE_SIZE // 2, TILE_SIZE // 2)
+
+#create dummy coin for showing score
+def draw_coin_counter(screen: pygame.Surface):
+    screen.blit(dummy_coin_img, dummy_coin_img_rect)
+    draw_text(f'X {score}', score_font, WHITE, TILE_SIZE - 10, 10)
+
 def empty_sprite_groups():
     blob_group.empty()
     platform_group.empty()
     lava_group.empty()
     coin_group.empty()
     exit_group.empty()
-
-    #create dummy coin for showing score
-    score_coin = Coin(TILE_SIZE // 2, TILE_SIZE // 2)
-    coin_group.add(score_coin)
 
 def draw_sprite_groups(screen: pygame.Surface):
     blob_group.draw(screen)
@@ -374,10 +381,6 @@ lava_group = pygame.sprite.Group()
 coin_group = pygame.sprite.Group()
 exit_group = pygame.sprite.Group()
 
-#create dummy coin for showing score
-score_coin = Coin(TILE_SIZE // 2, TILE_SIZE // 2)
-coin_group.add(score_coin)
-
 world = World(world_data)
 
 #create buttons
@@ -418,7 +421,7 @@ while run: #Game loop
             if pygame.sprite.spritecollide(player, coin_group, True): # pyright: ignore[reportArgumentType]
                 score += 1
                 coin_fx.play()
-            draw_text(f'X {score}', score_font, WHITE, TILE_SIZE - 10, 10)
+            draw_coin_counter(screen)
 
             if restart_button.draw(screen):
                 world = reset_level(level)
@@ -483,6 +486,7 @@ while run: #Game loop
         #if player has died
         elif game_state == State.GAME_OVER:
             draw_text('GAME OVER!', default_font, BLUE, (SCREEN_WIDTH // 2) - 180, 140)
+            draw_coin_counter(screen)
             if restart_button.draw(screen):
                 world_data = []
                 world = reset_level(level)
