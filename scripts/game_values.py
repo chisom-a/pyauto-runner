@@ -16,7 +16,7 @@ import os.path
 from enum import Enum, auto
 
 #Getting directory paths where scripts and data are located
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+SCRIPT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.path.pardir)
 ASSETS_DIR = os.path.join(SCRIPT_DIR, 'assets')
 IMG_DIR = os.path.join(ASSETS_DIR, 'img')
 AUDIO_DIR = os.path.join(ASSETS_DIR, 'audio')

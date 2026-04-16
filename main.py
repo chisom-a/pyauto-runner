@@ -17,8 +17,8 @@
 #import pprint <-- For debugging
 import pygame, pickle
 from pygame import mixer
-from objects import *
-from game_values import *
+from scripts.game_values import *
+from scripts.objects import *
 from sys import exit #Terminates the program
 
 pygame.mixer.pre_init(44100, -16, 2, 512)

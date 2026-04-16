@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import pygame #, pprint <-- For debugging
-from game_values import *
+from scripts.game_values import *
 
 class Button():
     def __init__(self, x: int, y: int, image: pygame.Surface):
