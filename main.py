@@ -47,16 +47,16 @@ score = 0
 #   index 1: Green horizontal platforms placed
 #   index 2: Green vertical platforms placed
 MAX_TILES_PLACED = ( #Store max tiles you can place in each level
-    (1, 0, 0),
+    (5, 0, 0),
     (2, 0, 0),
     (0, 2, 0),
     (0, 1, 1),
     (0, 3, 0),
     (0, 2, 1),
-    (99, 99, 99),
-    (99, 99, 99),
-    (99, 99, 99),
-    (99, 99, 99)
+    (0, 0, 4),
+    (4, 0, 0),
+    (0, 0, 4),
+    (1, 1, 1)
 )
 tiles_placed = [0, 0, 0]
 tile_to_place = 0
@@ -94,7 +94,7 @@ def draw_text(text: str, font: pygame.font.Font, text_col, x: int, y: int):
 #create dummy coin for showing score
 dummy_coin = Coin(TILE_SIZE // 2, TILE_SIZE // 2)
 
-#create dummy coin for showing score
+#draws the dummy coin and score counter
 def draw_score_counter(screen: pygame.Surface):
     dummy_coin.draw(screen)
     draw_text(f'X {score}', score_font, WHITE, TILE_SIZE - 10, 10)
@@ -494,9 +494,9 @@ while run: #Game loop
         
         #if player has completed the level
         elif game_state == State.WON_LEVEL:
-            #reset game and go to net level
-            level += 1
-            if level < MAX_LEVELS:
+            #reset game and go to next level
+            if (level + 1) < MAX_LEVELS:
+                level += 1
                 #reset level
                 world = reset_level(level)
                 game_state = State.EDITOR
