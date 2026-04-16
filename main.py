@@ -410,7 +410,7 @@ while run: #Game loop
         draw_sprite_groups(screen)
         game_state = player.update(game_state)
 
-        draw_text(f'Level {level+1}', score_font, WHITE, SCREEN_WIDTH // 2 - 50, 8*TILE_SIZE)
+        draw_text(f'Level {level+1}', score_font, WHITE, SCREEN_WIDTH // 2 - 50, 5)
 
         if game_state == State.GAMEPLAY:
             blob_group.update()
