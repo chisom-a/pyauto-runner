@@ -92,7 +92,7 @@ def draw_text(text: str, font: pygame.font.Font, text_col, x: int, y: int):
     screen.blit(img, (x, y))
 
 #create dummy coin for showing score
-dummy_coin = Coin(TILE_SIZE // 2, TILE_SIZE // 2)
+dummy_coin = Coin(TILE_SIZE // 2 - 2, TILE_SIZE // 2 - 5)
 
 #draws the dummy coin and score counter
 def draw_score_counter(screen: pygame.Surface):
@@ -410,7 +410,7 @@ while run: #Game loop
         draw_sprite_groups(screen)
         game_state = player.update(game_state)
 
-        draw_text(f'Level {level+1}', score_font, WHITE, SCREEN_WIDTH // 2 - 50, 5)
+        draw_text(f'Level {level+1}', score_font, WHITE, SCREEN_WIDTH // 2 - 50, 10)
 
         if game_state == State.GAMEPLAY:
             blob_group.update()
