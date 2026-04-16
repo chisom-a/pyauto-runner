@@ -40,7 +40,7 @@ except:
 
 #Information on game's state
 game_state = State.MAIN_MENU
-level = 0
+level = 9
 score = 0
 #For tiles_placed and each element list in MAX_TILES_PLACED,
 #   index 0: Green tiles placed
@@ -495,21 +495,26 @@ while run: #Game loop
         #if player has completed the level
         elif game_state == State.WON_LEVEL:
             #reset game and go to next level
-            if (level + 1) < MAX_LEVELS:
-                level += 1
+            level += 1
+            if level < MAX_LEVELS:
                 #reset level
                 world = reset_level(level)
                 game_state = State.EDITOR
             else:
-                draw_text('YOU WIN!', default_font, BLUE, (SCREEN_WIDTH // 2) - 140, 140)
-                #restart game
-                if restart_button.draw(screen):
-                    level = 0
-                    #reset level
-                    world = reset_level(level)
-                    game_state = State.EDITOR
-                    score = 0
-
+                game_state = State.WON_GAME
+        
+        #if player has completed the game
+        elif game_state == State.WON_GAME:
+            level = 9
+            draw_text('YOU WIN!', default_font, BLUE, (SCREEN_WIDTH // 2) - 140, 140)
+            #restart game
+            if restart_button.draw(screen):
+                level = 0
+                #reset level
+                world = reset_level(level)
+                game_state = State.EDITOR
+                score = 0
+        
         #checks if left mouse button has let go
         if pygame.mouse.get_pressed()[0] == 0:
             mouse_clicked = False

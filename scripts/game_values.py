@@ -27,6 +27,7 @@ class State(Enum):
     EDITOR = auto()
     GAMEPLAY = auto()
     WON_LEVEL = auto()
+    WON_GAME = auto()
 
 #Game variables
 GAME_WIDTH = 832
