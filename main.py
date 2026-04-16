@@ -40,7 +40,7 @@ except:
 
 #Information on game's state
 game_state = State.MAIN_MENU
-level = 9
+level = 0
 score = 0
 #For tiles_placed and each element list in MAX_TILES_PLACED,
 #   index 0: Green tiles placed
@@ -92,7 +92,7 @@ def draw_text(text: str, font: pygame.font.Font, text_col, x: int, y: int):
     screen.blit(img, (x, y))
 
 #create dummy coin for showing score
-dummy_coin = Coin(TILE_SIZE // 2 - 2, TILE_SIZE // 2 - 5)
+dummy_coin = Coin(TILE_SIZE // 2 - 3, TILE_SIZE // 2 - 6)
 
 #draws the dummy coin and score counter
 def draw_score_counter(screen: pygame.Surface):
