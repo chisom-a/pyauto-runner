@@ -86,6 +86,10 @@ jump_fx = pygame.mixer.Sound(os.path.join(AUDIO_DIR, 'jump.wav'))
 jump_fx.set_volume(0.5)
 game_over_fx = pygame.mixer.Sound(os.path.join(AUDIO_DIR, 'game_over.wav'))
 game_over_fx.set_volume(0.5)
+btn_click_fx = pygame.mixer.Sound(os.path.join(AUDIO_DIR, 'button_click.wav'))
+btn_click_fx.set_volume(0.5)
+place_block_fx = pygame.mixer.Sound(os.path.join(AUDIO_DIR, 'place_block.wav'))
+place_block_fx.set_volume(0.5)
 
 def draw_text(text: str, font: pygame.font.Font, text_col, x: int, y: int):
     img = font.render(text, True, text_col)
@@ -402,8 +406,10 @@ while run: #Game loop
     if game_state == State.MAIN_MENU:
         screen.blit(title_img, (96, 0))
         if exit_button.draw(screen):
+            btn_click_fx.play()
             run = False
         if start_button.draw(screen):
+            btn_click_fx.play()
             game_state = State.EDITOR
     else:
         world.draw()
@@ -423,6 +429,7 @@ while run: #Game loop
             draw_score_counter(screen)
 
             if restart_button.draw(screen):
+                btn_click_fx.play()
                 world = reset_level(level)
                 game_state = State.EDITOR
                 score = 0
@@ -439,6 +446,7 @@ while run: #Game loop
             if pygame.mouse.get_pressed()[0] == 1 and not mouse_clicked:
                 mouse_clicked = True
                 if pos_tile_x < TILES_PER_ROW and pos_tile_y < TILES_PER_COL:
+                    place_block_fx.play()
                     selected_tile = world_data[pos_tile_y][pos_tile_x]
                     if selected_tile == 0:
                         if tile_to_place == 10 and tiles_placed[0] < MAX_TILES_PLACED[level][0]:
@@ -462,12 +470,15 @@ while run: #Game loop
 
             #Draws buttons for picking tile to place
             if green_tile_button.draw(screen):
+                btn_click_fx.play()
                 tile_to_place = 10
             draw_text(f'X {MAX_TILES_PLACED[level][0] - tiles_placed[0]}', score_font, WHITE, 2*TILE_SIZE + 5, GAME_HEIGHT + (OUTER_MARGIN_HEIGHT // 2))
             if green_x_platform_button.draw(screen):
+                btn_click_fx.play()
                 tile_to_place = 11
             draw_text(f'X {MAX_TILES_PLACED[level][1] - tiles_placed[1]}', score_font, WHITE, 6*TILE_SIZE + 5, GAME_HEIGHT + (OUTER_MARGIN_HEIGHT // 2))
             if green_y_platform_button.draw(screen):
+                btn_click_fx.play()
                 tile_to_place = 12
             draw_text(f'X {MAX_TILES_PLACED[level][2] - tiles_placed[2]}', score_font, WHITE, 10*TILE_SIZE + 5, GAME_HEIGHT + (OUTER_MARGIN_HEIGHT // 2))
 
@@ -480,6 +491,7 @@ while run: #Game loop
                 pygame.draw.rect(screen, MOUSE_TILE_COLOR, green_y_platform_button.rect, 3)
 
             if load_button.draw(screen):
+                btn_click_fx.play()
                 game_state = State.GAMEPLAY
 
         #if player has died
@@ -487,6 +499,7 @@ while run: #Game loop
             draw_text('GAME OVER!', default_font, BLUE, (SCREEN_WIDTH // 2) - 180, 140)
             draw_score_counter(screen)
             if restart_button.draw(screen):
+                btn_click_fx.play()
                 world_data = []
                 world = reset_level(level)
                 game_state = State.EDITOR
