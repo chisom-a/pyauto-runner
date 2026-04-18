@@ -8,10 +8,6 @@ PyAuto Runner is an auto-runner game created by the PyAuto Team, consisting of C
 
 -Include video-
 
-### Screenshots
-
--Include screenshots-
-
 ## How to Run the Game
 ### From Zip File (only Windows x86_64)
 Download and extract the latest release. Run `pyauto-runner.exe` inside the newly created folder (the executable must be in the same folder that contains `_internal`).
@@ -32,6 +28,11 @@ Player Controls:
 * W, Up Arrow, Spacebar - Jump
 
 ## Project Experience
+
+### Screenshots
+
+-Include screenshots-
+
 ### Inspiration
 The idea of this project started after completing my entry for the previous C.O.D.E. Club challenge, PySquare Mover. While working on that project was fun, I felt it didn't push my capabilities in what I could develop in Python. My goals for this project were to push my limits in Python and make the game more advanced in every aspect compared to my previous entry in functionalities, artwork, audio, and presentation. For this project, I was inspired by two games: Super Mario Maker, a game where you can play and create user-made levels, and Super Mario Run, a game where you're constantly running through courses and must time your jumps to succeed. I wanted to combine these aspects into one game where you must place blocks at the right places and time your jumps to complete the levels.
 
