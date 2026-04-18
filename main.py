@@ -288,7 +288,7 @@ class Player():
 #load tile images
 dirt_img = pygame.image.load(os.path.join(IMG_DIR, 'dirt.png'))
 grass_img = pygame.image.load(os.path.join(IMG_DIR, 'grass.png'))
-green_tile_img = dirt_img.copy()
+green_tile_img = grass_img.copy()
 green_tile_img.fill(USER_TILE_COLOR_RGBA, special_flags=pygame.BLEND_RGBA_ADD)
 green_x_platform_img = pygame.image.load(os.path.join(IMG_DIR, 'platform_x.png'))
 green_x_platform_img.fill(USER_TILE_COLOR_RGBA, special_flags=pygame.BLEND_RGBA_ADD)
