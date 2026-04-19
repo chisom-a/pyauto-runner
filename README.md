@@ -1,6 +1,9 @@
-# PyAuto Runner (Work-in-Progress)
+<figure>
+    <img src="_media/thumbnail.png" width="400" height="400"
+         alt="Thumbnail">
+</figure>
 
--Include Thumbnail-
+# PyAuto Runner
 
 PyAuto Runner is an auto-runner game created by the PyAuto Team, consisting of Chisom A. (me), for the Spring 2026 C.O.D.E. Club Engineering Challenge at Prince George's Community College. In this game, you must place blocks to go through the levels. Also, the player moves automatically between left and right, meaning you can only jump manually. This game tests the player's strategy and coordination, as they must determine where to place the tiles and time their jump movements to complete each level.
 
@@ -31,7 +34,20 @@ Player Controls:
 
 ### Screenshots
 
--Include screenshots-
+<figure>
+    <img src="_media/main_menu.png" width="300" height="300"
+         alt="Title Screen">
+</figure>
+
+<figure>
+    <img src="_media/editor.png" width="300" height="300"
+         alt="Editor">
+</figure>
+
+<figure>
+    <img src="_media/gameplay.png" width="300" height="300"
+         alt="Gameplay">
+</figure>
 
 ### Inspiration
 The idea of this project started after completing my entry for the previous C.O.D.E. Club challenge, PySquare Mover. While working on that project was fun, I felt it didn't push my capabilities in what I could develop in Python. My goals for this project were to push my limits in Python and make the game more advanced in every aspect compared to my previous entry in functionalities, artwork, audio, and presentation. For this project, I was inspired by two games: Super Mario Maker, a game where you can play and create user-made levels, and Super Mario Run, a game where you're constantly running through courses and must time your jumps to succeed. I wanted to combine these aspects into one game where you must place blocks at the right places and time your jumps to complete the levels.
