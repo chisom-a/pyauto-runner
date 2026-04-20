@@ -62,6 +62,10 @@ Another challenge I had was packaging the game into a zip file with the data and
 ### Reflection
 I had a very fun experience working on this project. I learned more about using Python and the Pygame framework, including the usage of classes, sound effects, data creation, and data processing. More importantly, I learned you don't have to limit yourself to your own knowledge and can use other people's work to boost your own creations. I feel proud of how far I pushed myself on this project and of overcoming the challenges it brought.
 
+## Presentation
+
+[Presentation]("_media/PyAuto_Runner_Presentation.pptx")
+
 ## Credits
 *  [Coding with Russ's PyGame - Platformer Tutorials](https://www.youtube.com/playlist?list=PLjcN1EyupaQnHM1I9SmiXfbT6aG4ezUvu) - Base platformer code and assets
 *  [Kenny.nl](https://kenney.nl/assets/platformer-art-deluxe) - Orginial source of artwork
