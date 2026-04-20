@@ -64,7 +64,7 @@ I had a very fun experience working on this project. I learned more about using 
 
 ## Presentation
 
-[Presentation]("_media/PyAuto_Runner_Presentation.pptx")
+The presentation is inside the `_media` folder.
 
 ## Credits
 *  [Coding with Russ's PyGame - Platformer Tutorials](https://www.youtube.com/playlist?list=PLjcN1EyupaQnHM1I9SmiXfbT6aG4ezUvu) - Base platformer code and assets
