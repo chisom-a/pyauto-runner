@@ -9,7 +9,7 @@ PyAuto Runner is an auto-runner game created by the PyAuto Team, consisting of C
 
 ## Demonstration
 
--Include video-
+[Demonstration Video](https://youtu.be/P0hLLmMYhFM)
 
 ## How to Run the Game
 ### From Zip File (only Windows x86_64)
@@ -60,7 +60,7 @@ After developing the engine, I had to create the game's levels. Thankfully, Codi
 Another challenge I had was packaging the game into a zip file with the data and executable. I wanted to package the game so people unfamiliar with using Python can still run the game. I found the PyInstaller tool to put all the scripts and assets into a folder with the executable. I then developed a PowerShell script to use the tool and package the folder created into an executable.
 
 ### Reflection
-It was very fun to work on this project. I learned more about using Python and the Pygame framework, including the usage of classes, sound effects, data creation, and data processing. More importantly, I learned you don't have to limit yourself to your own knowledge and can use other people's work to boost your own creations. I feel proud of how far I pushed myself on this project and of overcoming the challenges it brought.
+I had a very fun experience working on this project. I learned more about using Python and the Pygame framework, including the usage of classes, sound effects, data creation, and data processing. More importantly, I learned you don't have to limit yourself to your own knowledge and can use other people's work to boost your own creations. I feel proud of how far I pushed myself on this project and of overcoming the challenges it brought.
 
 ## Credits
 *  [Coding with Russ's PyGame - Platformer Tutorials](https://www.youtube.com/playlist?list=PLjcN1EyupaQnHM1I9SmiXfbT6aG4ezUvu) - Base platformer code and assets
